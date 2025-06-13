@@ -4,8 +4,8 @@ import {Component, ElementRef, NgZone, OnDestroy, Output, QueryList, ViewChild, 
 import {WsConnectionService} from "../../connection-services/ws-connection.service";
 import {DbPerformanceProperties} from "../../auth-properties/generic-authentication-properties-template";
 import {HttpConnectionService} from "../../connection-services/http-connection.service";
-import {catchError, Observable, Subscription, switchMap} from "rxjs";
-import {SubscriptionLog} from "rxjs/internal/testing/SubscriptionLog";
+import {Observable, Subscription, switchMap} from "rxjs";
+//import {SubscriptionLog} from "rxjs/internal/testing/SubscriptionLog";
 import { EventEmitter } from '@angular/core';
 import {DbPerformanceFunctionalProperties} from "../../auth-properties/db-performance-functional-properties";
 import {NgForOf} from "@angular/common";
@@ -120,7 +120,7 @@ export class DataProcessesComponent implements OnDestroy
   }
 
 
-  validateCloseDbView(event:any, endPointPath:string)
+  validateCloseDbView(_event:any, endPointPath:string)
   {
     if(!this.databaseExternalView.nativeElement.contains('hidden'))
     {

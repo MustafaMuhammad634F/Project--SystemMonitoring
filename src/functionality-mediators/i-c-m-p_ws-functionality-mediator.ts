@@ -61,15 +61,15 @@ export class ICMP_wsFunctionalityMediator {
               {
                 next: (extricatedData_: any) => {
 
-                  let icmpVisualElements = ICMP_visualElements[serverProperties.serverClusterName];
-                  let iisVisualElements = IIS_visualElements[serverProperties.serverClusterName];
-                  let dskSpcVisualElements = dskSpc_visualElements[serverProperties.serverClusterName];
-                  let dbPerformanceVisualElements = dbPerformanceElements![serverProperties.serverClusterName];
-                  let dbServicesVisualElements = dbServicesElements![serverProperties.serverClusterName];
+                  const icmpVisualElements = ICMP_visualElements[serverProperties.serverClusterName];
+                  const iisVisualElements = IIS_visualElements[serverProperties.serverClusterName];
+                  const dskSpcVisualElements = dskSpc_visualElements[serverProperties.serverClusterName];
+                  const dbPerformanceVisualElements = dbPerformanceElements![serverProperties.serverClusterName];
+                  const dbServicesVisualElements = dbServicesElements![serverProperties.serverClusterName];
 
-                  let icmpInnerSpanText;
+                  let _icmpInnerSpanText;
 
-                  let apiResponse = extricatedData_['responds'][serverProperties.serverClusterName];
+                  const apiResponse = extricatedData_['responds'][serverProperties.serverClusterName];
 
 
                   if (extricatedData_['responds'])
@@ -108,13 +108,13 @@ export class ICMP_wsFunctionalityMediator {
         (
           this.wsConnectionService
             .getErrorSubject()
-            .subscribe((data: any) =>
+            .subscribe((_data: any) =>
             {
 
               console.info("No proper connection established");
 
-              let iisVisualElements = IIS_visualElements[serverProperties.serverClusterName];
-              let dskSpcVisualElements = dskSpc_visualElements[serverProperties.serverClusterName];
+              const iisVisualElements = IIS_visualElements[serverProperties.serverClusterName];
+              const dskSpcVisualElements = dskSpc_visualElements[serverProperties.serverClusterName];
 
               for(let index = 0; index < 4; index++)
               {
@@ -145,7 +145,7 @@ export class ICMP_wsFunctionalityMediator {
 
 
     private activateProperConnectionVisualElements(serverProperties:any, icmpVisualElement: any, iisVisualElement:any,
-                                                                                                    dskSpcVisualElement:any,  dbPerformanceVisualElements:any, dbServicesVisualElements:any,
+                                                                                                    dskSpcVisualElement:any,  dbPerformanceVisualElements:any, _dbServicesVisualElements:any,
                                                                                                     index: number,
                                                                                                     icmpInnerSpanText: any = icmpVisualElement[index].nativeElement.querySelector('.pill-text'))
     {
@@ -171,7 +171,7 @@ export class ICMP_wsFunctionalityMediator {
     }
 
 
-    private activate_improperConnectionVisualElements(serverProperties:any, icmpVisualElement: any, iisVisualElement:any, dskSpcVisualElement:any,
+    private activate_improperConnectionVisualElements(_serverProperties:any, icmpVisualElement: any, iisVisualElement:any, dskSpcVisualElement:any,
                                                       index: number, icmpInnerSpanText: any = icmpVisualElement[index].nativeElement.querySelector('.pill-text'))
     {
       icmpVisualElement[index]

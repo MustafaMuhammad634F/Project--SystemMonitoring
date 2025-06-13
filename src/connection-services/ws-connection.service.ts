@@ -52,7 +52,7 @@ export class WsConnectionService {
 
     this.sockets[socketKey] = new WebSocket(fullURL);
 
-    let wsSocket = this.sockets[socketKey];
+    const wsSocket = this.sockets[socketKey];
 
     const connectionState = new BehaviorSubject<boolean>(false);
 
@@ -65,7 +65,7 @@ export class WsConnectionService {
       while each connection established in a group [4 Servers - 1 Connection].
       */
       connectionState.next(true);
-      await this.induceMessageStream('pulse connection', path, intervalTimeValue);
+      this.induceMessageStream('pulse connection', path, intervalTimeValue);
     };
 
     wsSocket.onmessage = async(event:any) =>
@@ -74,7 +74,7 @@ export class WsConnectionService {
       await this.getMessageSubject().next(data);
     };
 
-    wsSocket.onerror = (error:any) =>
+    wsSocket.onerror = (_error:any) =>
     {
       this.errorSubject.next(new Error("Can't establish websocket connection."));
       connectionState.next(false);
@@ -117,22 +117,22 @@ export class WsConnectionService {
   }
 
 
-  sendData(data:any, path:any)
+  async sendData(data:any, path:any)
   {
     if(this.endPoints[path] && this.endPoints[path].wsSocket.readyState === WebSocket.OPEN)
     {
-      this.endPoints[path].wsSocket.send(JSON.stringify(data));
+      await this.endPoints[path].wsSocket.send(JSON.stringify(data));
     }
   }
 
 
-  async induceMessageStream(data:any, path:any, intervalTimeValue:number)
+  induceMessageStream(data:any, path:any, intervalTimeValue:number)
   {
     this.delay(500).then(()=>
     {
-      setInterval(()=>
+      setInterval(async ()=>
       {
-        this.sendData(data, path);
+        await this.sendData(data, path);
       }, intervalTimeValue);
     })
   }

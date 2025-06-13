@@ -1,9 +1,5 @@
 // اللهم بسمك الأعظم لا إله إلا أنت سبحانك إني كنت  من الظالمين
 
-export interface GenericAuthenticationPropertiesTemplate
-{
-
-}
 
 export interface ICMP_clusterAuthProperties
 {

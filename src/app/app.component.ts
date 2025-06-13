@@ -245,7 +245,7 @@ export class AppComponent implements OnDestroy, AfterViewInit{
 
   establish_ICMP_iterativeCheck() {
 
-    let integrationClusterProperties = this.icmpClusterProperties.icmpCP_integration;
+    const integrationClusterProperties = this.icmpClusterProperties.icmpCP_integration;
 
     const intServersICMP_visualElements:ClusterVisualElements = {};
     const intServersIIS_visualElements:ButtonVisualElements = {};

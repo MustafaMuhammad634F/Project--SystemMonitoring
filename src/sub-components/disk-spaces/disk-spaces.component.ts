@@ -2,9 +2,8 @@
 
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {HttpConnectionService} from "../../connection-services/http-connection.service";
-import {DskSpcFunctionalProperties} from "../../auth-properties/dsk-spc-functional-properties";
+//import {DskSpcFunctionalProperties} from "../../auth-properties/dsk-spc-functional-properties";
 import {
-  DbPerformanceProperties,
   DskSpcAuthReqBody
 } from "../../auth-properties/generic-authentication-properties-template";
 import {Subscription} from "rxjs";
@@ -31,9 +30,9 @@ export class DiskSpacesComponent
   @ViewChild('overlay') viewOverlay!:ElementRef;
 
   private retrieveDskSpcSubscription!:Subscription;
-  protected api_exteriorExtricatedData:any = [{}];
+  protected api_exteriorExtricatedData:any[] = [{}];
 
-  validateCloseDskSpcView(event:any)
+  validateCloseDskSpcView(_event:Event)
   {
     if(!this.diskSpcExternalView.nativeElement.contains('hidden'))
     {
@@ -78,7 +77,7 @@ export class DiskSpacesComponent
   }
 
 
-  trackById(index: number, item: any): number
+  trackById(_index: number, item: any): number
   {
     return item.label; // or any unique identifier
   }

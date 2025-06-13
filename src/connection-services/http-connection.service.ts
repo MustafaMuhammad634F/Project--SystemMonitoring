@@ -8,7 +8,7 @@ import {
   DbService_uniChkAuthReqBody, DskSpcAuthReqBody,
   IIS_AuthenticationReqBody
 } from "../auth-properties/generic-authentication-properties-template";
-import {catchError, interval, of, startWith, switchMap, throwError} from "rxjs";
+import {catchError, interval, startWith, switchMap, throwError} from "rxjs";
 import {DskSpcFunctionalProperties} from "../auth-properties/dsk-spc-functional-properties";
 import {DbServicesFunctionalProperties} from "../auth-properties/db-services-functional-properties";
 import {IIS_FunctionalProperties} from "../auth-properties/i-i-s_-functional-properties";
@@ -32,13 +32,13 @@ export class HttpConnectionService {
 
   initiateConnection_iterativeDbPerfCheck(serverProperties: DbPerformanceProperties)
   {
-    let parameters = new HttpParams()
+    const parameters = new HttpParams()
       .set('connStrName', serverProperties.connectionString);
 
     return interval(serverProperties.intervalTimeValue)
       .pipe(startWith(0), switchMap(()=>
         this.http.get(`${this.baseURL}`+`${this.DB_PERFORMANCE_CHECK_ENDPOINT_PATH}`, {params: parameters})),
-        catchError(err=>
+        catchError(_err=>
         {
           return throwError(()=> new Error('HTTP Error!'));
         }));
@@ -47,10 +47,10 @@ export class HttpConnectionService {
 
   initiateConnection_endDbProcess(process: string)
   {
-    let parameters = new HttpParams()
+    const parameters = new HttpParams()
       .set('processId', process);
 
-    return this.http.get(`${this.baseURL}/endDbProcess`, {params: parameters}).pipe(catchError(err=>throwError(()=>
+    return this.http.get(`${this.baseURL}/endDbProcess`, {params: parameters}).pipe(catchError(_err=>throwError(()=>
     {
       new Error("Couldn't establish a connection with server.")
     })))
@@ -86,7 +86,7 @@ export class HttpConnectionService {
       .set('Expires', '0');
 
     return this.http.post(`${this.baseURL}`+`${this.RESET_IIS_SERVICE_ENDPOINT_PATH}`, serverProperties, {headers: requestHeader})
-      .pipe(catchError(err =>
+      .pipe(catchError(_err =>
       {
         return throwError(()=>
             new Error("Couldn't establish a connection with server."));
@@ -102,7 +102,7 @@ export class HttpConnectionService {
       .set('Expires', '0');
 
     return this.http.post(`${this.baseURL}`+`${this.DISK_SPACE_VIEW_ENDPOINT_PATH}`, serverProperties, {headers: requestHeader})
-      .pipe(catchError(err=>
+      .pipe(catchError(_err=>
       {
         return throwError(()=>
         new Error("Couldn't establish a connection with server."));

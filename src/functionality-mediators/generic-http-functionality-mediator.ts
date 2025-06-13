@@ -2,7 +2,7 @@
 
 import {HttpConnectionService} from "../connection-services/http-connection.service";
 import {ElementRef, NgZone} from "@angular/core";
-import {IIS_FunctionalProperties} from "../auth-properties/i-i-s_-functional-properties";
+//import {IIS_FunctionalProperties} from "../auth-properties/i-i-s_-functional-properties";
 import {
   DbPerformanceProperties,
   DbService_iterChkAuthReqBody,
@@ -11,7 +11,7 @@ import {
 } from "../auth-properties/generic-authentication-properties-template";
 import {Subscription} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
-import {DbServicesFunctionalProperties} from "../auth-properties/db-services-functional-properties";
+//import {DbServicesFunctionalProperties} from "../auth-properties/db-services-functional-properties";
 import {DbPerformanceFunctionalProperties} from "../auth-properties/db-performance-functional-properties";
 
 export class GenericHttpFunctionalityMediator
@@ -30,9 +30,9 @@ export class GenericHttpFunctionalityMediator
     if(this.iterativeCheckDb_performanceSubscription)
       this.iterativeCheckDb_performanceSubscription.unsubscribe();
 
-    let potentialObservedFactor:any;
-    let innerIconElement:any = affectedElements.nativeElement.querySelector('.highlight');
-    let innerTxtElement:any = affectedElements.nativeElement.querySelector('.bac-l-stack-xs');
+    let potentialObservedFactor:number;
+    const innerIconElement:HTMLElement = affectedElements.nativeElement.querySelector('.highlight');
+    const innerTxtElement:any = affectedElements.nativeElement.querySelector('.bac-l-stack-xs');
 
     this.ngZone.runOutsideAngular(()=>
     {
@@ -85,7 +85,7 @@ export class GenericHttpFunctionalityMediator
                 innerTxtElement.innerHTML = 'مستقــرة';
               }
             }
-          },error: (err:any)=>
+          },error: (_err:Error)=>
           {
             console.log("Error Occurred in implementation phase");
 
@@ -110,7 +110,7 @@ export class GenericHttpFunctionalityMediator
    *                                                      • __db service/agent reset button__ [3]
    *                                                      • __db service/agent processing status__ [4]
    * */
-  syncCheckDbServices(serverProperties:DbService_iterChkAuthReqBody, dbServiceAffectedElements:any[], dbAgentServiceAffectedElements:any[], intervalTimeValue:number)
+  syncCheckDbServices(serverProperties:DbService_iterChkAuthReqBody, dbServiceAffectedElements:any[], dbAgentServiceAffectedElements:ElementRef[], intervalTimeValue:number)
   {
     if(this.iterativeCheckDb_serviceSubscription)
       this.iterativeCheckDb_serviceSubscription.unsubscribe();
@@ -136,7 +136,7 @@ export class GenericHttpFunctionalityMediator
    *                                          • db service/agent Reset Button [3];
    *                                          • db service/agent Processing Text [4].
    * */
-  private updateDbServiceStatus(data: any, serviceName:string, affectedElements:any[])
+  private updateDbServiceStatus(data: any, serviceName:string, affectedElements:ElementRef[])
   {
     if(data["Response"][serviceName] === 'Running')
     {
@@ -175,7 +175,7 @@ export class GenericHttpFunctionalityMediator
    *                                           • service status reset button [4]
    *
    * */
-  syncStartDbService(affectedElements:any[], dbServiceAuthProperties:DbService_uniChkAuthReqBody)
+  syncStartDbService(affectedElements:HTMLElement[], dbServiceAuthProperties:DbService_uniChkAuthReqBody)
   {
     if(this.uniCheckDb_serviceSubscription && this.startDb_serviceSubscription)
     {
@@ -222,7 +222,7 @@ export class GenericHttpFunctionalityMediator
    *                          • IIS ERROR TEXT [2]
    *                          • IMPLY STATUS [3]
    */
-  syncResetIIS(button:HTMLButtonElement, affectedElements:any[], iisAuthInfo:IIS_AuthenticationReqBody)
+  syncResetIIS(button:HTMLButtonElement, affectedElements:HTMLElement[], iisAuthInfo:IIS_AuthenticationReqBody)
   {
     if(this.resetIIS_subscription)
       this.resetIIS_subscription.unsubscribe();
