@@ -1,0 +1,703 @@
+
+
+//                                                بسم ربي العزير الكريم
+
+/**
+                                                                Generic Elements
+*/
+
+
+.img-btn
+{
+  border: none;
+  cursor:pointer;
+  background:none;
+}
+
+
+
+/**
+                                                                ───────────────────────
+                                                                        • NAVIGATION RIBBON •
+                                                                ───────────────────────
+*/
+
+#nav-ribbon
+{
+  position:fixed;
+  height: 37px;
+  width: 100%;
+  top:0;
+  left:0;
+  z-index: 100;
+}
+
+#nav-inner-elements
+{
+  display:flex;
+  justify-content:right;
+  align-content:center;
+  margin-top:3px;
+  margin-right: 10px;
+}
+
+#settings-btn
+{
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding-top:3px;
+}
+
+
+#settings-btn:hover
+{
+  background: rgba(193, 205, 224, 0.72);
+  border-radius: 25px;
+}
+
+#app-connection
+{
+  margin-right: 10px;
+}
+
+
+/**
+                                                                ───────────────────────
+                                                                                     • TABLE •
+                                                                ───────────────────────
+*/
+
+.nt-wrk-obs-tbl-container{
+  width: 79%;
+  margin: 60px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+
+.nt-wrk-obs-tbl-header
+{
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+#nt-wrk-obs-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  border-style: hidden;
+  table-layout:fixed
+}
+
+th, td {
+  padding: 7px;
+  text-align: center;
+  border: 1px solid #ddd;
+  width: 20px;
+}
+
+th {
+  background-color: #f0f0f0;
+  position: relative;
+  height: 25px;
+  vertical-align: middle;
+  text-align: center;
+
+}
+
+td {
+  /*max-width: 300px;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+
+.th-inner-cont
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.td-srv-title
+{
+  background-color: #FFFFCC;
+}
+
+
+
+/**
+                                                                ─────────────────────────────
+                                                                      • ICMP ECHO REQUEST COLUMN •
+                                                                ─────────────────────────────
+*/
+
+.c-pill {
+  align-items: center;
+  font-weight: bold;
+  font-size: 11px;
+  display: inline-block;
+  height: 100%;
+  white-space: nowrap;
+  width: auto;
+  position: relative;
+  border-radius: 100px;
+  // line-height: 1;
+  overflow: hidden;
+  padding: 0 12px 0 12px;
+  text-overflow: ellipsis;
+  line-height: 1.25rem;
+  color: #595959;
+
+  word-break: break-word;
+
+  &:after
+  {
+    border-radius: 50%;
+    content: '';
+    height: 10px;
+    right: 6px;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+  }
+
+
+}
+
+.c-pill--success
+{
+  background: #b4eda0;
+}
+.c-pill--success:after
+{
+  background: #6BC167;
+}
+.c-pill--warning
+{
+  background: #ffebb6;
+}
+.c-pill--warning:after
+{
+  background: #ffc400;
+}
+.c-pill--danger
+{
+  background: #ffd5d1;
+}
+
+.c-pill--danger:after {
+  background: #ff4436;
+}
+
+.pill-text
+{
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+
+
+/**
+                                                                ─────────────────────────────
+                                                                • DATABASE PERFORMANCE COLUMN •
+                                                                ─────────────────────────────
+*/
+
+.bac-l-stack-xs {
+  margin-left: 5px !important;
+}
+
+.highlight {
+  position: relative;
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.highlight.positive-medium::after {
+  background: rgba(42, 148, 70, 1);
+  border: 1px solid rgba(42, 148, 70, 1);
+}
+
+.highlight.attention-low::after {
+  background: rgba(245, 136, 31, 1);
+  border: 1px solid rgba(245, 136, 31, 1);
+  -webkit-animation: pulse_attention-low 2.7s ease infinite;
+  animation: pulse_attention-low 2.7s ease infinite;
+}
+.highlight.critical-low::after {
+  background: rgba(200, 16, 47, 1);
+  border: 1px solid rgba(200, 16, 47, 1);
+  -webkit-animation: pulse_critical-low 1.6s ease infinite;
+  animation: pulse_critical-low 1.6s ease infinite;
+}
+
+
+@keyframes pulse_attention-low {
+  0% {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(245, 136, 31, 1);
+    box-shadow: 0px 0px 0px 0px rgba(245, 136, 31, 1);
+  }
+  100% {
+    -webkit-box-shadow: 0px 0px 0px 5px transparent;
+    box-shadow: 0px 0px 0px 5px transparent;
+  }
+}
+
+@keyframes pulse_critical-low {
+  0% {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(200, 16, 47, 1);
+    box-shadow: 0px 0px 0px 0px rgba(200, 16, 47, 1);
+  }
+  100% {
+    -webkit-box-shadow: 0px 0px 0px 5px transparent;
+    box-shadow: 0px 0px 0px 5px transparent;
+  }
+}
+
+.status-tag {
+  position: relative;
+  width: auto;
+  display: inline-flex;
+  height: 24px;
+  padding: 0 10px 0 5px;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
+.status-tag.positive-medium {
+  background: rgba(42, 148, 70, 0.07);
+}
+
+.status-tag.attention-low {
+  background: RGBA(245, 136, 31, 0.07);
+}
+
+.status-tag.critical-low {
+  background: rgba(200, 16, 47, 0.07);
+}
+
+.status-tag__icon,
+.status-tag__txt {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.status-tag__icon {
+  font-size: 12px;
+}
+
+
+tag__icon.positive-medium {
+  color: rgba(42, 148, 70, 1);
+}
+
+
+.status-tag.positive-medium .status-tag__txt {
+  color: rgba(42, 148, 70, 1);
+}
+
+.status-tag__icon.attention-low {
+  color: rgba(245, 136, 31, 1);
+}
+
+.status-tag__icon.critical-low {
+  color: rgba(200, 16, 47, 1);
+}
+
+
+
+
+
+
+.shw-db-perf-dtls-btn{
+  background-image: linear-gradient(#f7f8fa ,#e7e9ec);
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  box-shadow: rgba(255,255,255,.6) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  height: 29px;
+  outline: 0;
+  font-family: Tajawal, serif;
+  overflow: hidden;
+  padding: 0 11px;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin-right: 7px;
+}
+
+.shw-db-perf-dtls-btn:active:hover {
+  border-color: #ea9a66;
+}
+
+.shw-db-perf-dtls-btn:hover {
+  border-color: #a2a6ac #979aa1 #82858a;
+}
+
+
+
+/**
+                                                                ─────────────────────────────
+                                                                      • DATABASE SERVICES COLUMN •
+                                                                ─────────────────────────────
+*/
+
+
+.sql_srvc_sts_div
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sql-srvc-sts
+{
+  font-weight: bold;
+  color: #006100;
+}
+
+.sql-srvc-sts-nt-wrk
+{
+  font-weight: bold;
+  color: #D22B2B;
+}
+
+
+.dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px transparentize(#d4e0f5, 0.8);
+  background-color: green;
+  margin-left: 12px;
+}
+
+.red-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px transparentize(#ea6f56, 0.8);
+  background-color: #f50202;
+  margin-left: 12px;
+}
+
+.process-text {
+  animation-name: blinker;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes blinker {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+
+
+/**
+                                                                ─────────────────────────────
+                                                                          • IIS SERVICE RESET COLUMN •
+                                                                ─────────────────────────────
+*/
+
+
+.iis-content
+{
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+
+
+.iis-err
+{
+  display:none;
+  justify-content: space-around;
+  align-items:center;
+}
+
+
+.iis-err-txt
+{
+  color: red;
+  font-size: 14px;
+}
+
+
+.iis-exec-btn {
+  background-color:  	#D22B2B;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.iis-exec-btn:hover{
+  background-color:  	#C04000;
+}
+
+.iis-exec-btn:disabled
+{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+.loading {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  border: 3px solid rgba(158, 229, 150, 0.3);
+  border-radius: 50%;
+  border-top-color: #08a248;
+  animation: spin 2ms ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+
+.loader-container{
+  //padding-top:5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.loader-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 25%;
+}
+
+.loader-item{
+  display: flex;
+  width: 21px;
+  height: 21px;
+  color: inherit;
+  //vertical-align: middle;
+  pointer-events: none;
+  font-size: 30px;
+  border: 3px solid #4361BA;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: 1s loader-animation linear infinite;
+  position: relative;
+  //margin-bottom: 30px;
+}
+
+@keyframes loader-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-success-completed{
+  //animation: none;
+  //border-bottom-color: none;
+  border-color: #40DC6D;
+  border-width: 3px;
+  animation: fade-in-bck 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.loader-failure-completed{
+  animation: none;
+  //border-bottom-color: none;
+  border-color: #E21515;
+  border-width: 3px;
+  //animation: fade-in-bck 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  //
+}
+
+.loader-check-icon{
+  display: block;
+  font-size: 30px;
+}
+
+.loader-check-icon-completed{
+  display: block;
+  color: #40DC6D;
+  animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.loader-failure-icon{
+  display: none;
+  font-size: 30px;
+}
+
+.loader-failure-icon-completed{
+  display: block;
+  color: #ff6666;
+  animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-bck {
+  0% {
+    transform: translateZ(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+/**
+                                                                ─────────────────────────────
+                                                                                • DISK SPACE COLUMN •
+                                                                ─────────────────────────────
+*/
+
+
+
+
+.shw-hdd {
+  background-color:  #009E60;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.shw-hdd:hover {
+  background-color:  	#114111;
+  color: #ffffff;
+}
+
+.shw-hdd:disabled
+{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.mark {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 21px;
+  height: 21px;
+  border: 2px solid #e67e22;
+  border-radius: 100px;
+}
+.mark:before, .mark:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+
+
+
+
+
+
+

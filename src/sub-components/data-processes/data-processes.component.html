@@ -1,0 +1,90 @@
+<!--بسم الله الرحمن الرحيم-->
+
+<div class="db-view hidden" (keydown.escape)="validateCloseDbView($event, this.mainEndPoint)"
+     #dbProcessView>
+
+  <button
+    #closeDB_view_btn class="close-db-view"
+    (click)="closeDbView(this.mainEndPoint)">&times;
+  </button>
+
+  <div style="margin: 50px 0 0 30px; display: flex; justify-content: center;">
+
+  </div>
+
+  <div style="display: flex; justify-content:center; align-items:center;">
+    <div class="loader" style="display:none"
+         #connectionAwaiter>
+    </div>
+  </div>
+
+  <div>
+    <div class="table-container" dir="rtl" #dbProcessTableContainer>
+      <div class="table-header">العمليات الأكثر إستهلاكاً</div>
+      <table id="data-process-tbl"
+             #dbProcessTable>
+        <thead>
+
+        <tr>
+
+          <th>توقيتات المعالجة</th>
+          <th> الوقت المستغرق</th>
+          <th colspan="2">العملية</th>
+          <th>إنهاء العملية</th>
+
+        </tr>
+
+        </thead>
+        <tbody id="table-body">
+        <tr  *ngFor="let item of api_exteriorExtricatedData; let i = index ">
+
+          <td>
+            {{item.cpu_time + ' مللي ثانية'}}
+          </td>
+
+          <td>
+            {{item.duration_seconds + ' مللي ثانية'}}
+          </td>
+
+          <td
+            #processText>
+            {{item.query_text}}
+          </td>
+
+          <td>
+            <button
+              #cpyBtn  (click)="cpyQuery(i)"
+              style="background: none; border: none; cursor: pointer" >
+              <img src="assets/copy.png">
+            </button>
+
+            <h4 style="display: none; font-size:12px; color: #229722" #cpyValidationTxt>
+              تم النسخ
+            </h4>
+
+          </td>
+
+          <td>
+            <button (click)="endDbProcess(item.session_id, i)" class="end-db-process-btn" role="button">إنهــاء</button>
+          </td>
+
+        </tr>
+
+        </tbody>
+
+        <tfoot>
+        <tr>
+          <td colspan="5" style="background-color: #f5f5f5">
+          </td>
+        </tr>
+        </tfoot>
+
+      </table>
+    </div>
+
+
+  </div>
+</div>
+
+<div #overlay class="overlay hidden"></div>
+
